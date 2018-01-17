@@ -99,13 +99,32 @@
 
 })(jQuery);
 
-$("#slideshow > div:gt(0)").hide();
+// $("#slideshow > div:gt(0)").hide();
 
-setInterval(function() { 
-  $('#slideshow > div:first')
-    .fadeOut(1000)
-    .next()
-    .fadeIn(1000)
-    .end()
-    .appendTo('#slideshow');
-},  3000);
+// setInterval(function() { 
+//   $('#slideshow > div:first')
+//     .fadeOut(1000)
+//     .next()
+//     .fadeIn(1000)
+//     .end()
+//     .appendTo('#slideshow');
+// },  3000);
+
+var counter = 0;
+function switchSlides() {
+	var slideshows = document.getElementsByClassName('slideshow');
+	if (counter == 3) {
+		counter = 0;
+	} else {
+		counter = counter + 1; 
+	}
+	for(var i = 0; i < slideshows.length; i = i + 1) {
+		slideshow = slideshows[i];
+		var slideshowId = slideshow.id;
+		var image = slideshow.childNodes[0];
+		image.src = `images/${slideshowId}/${counter}.jpg`
+	}
+}
+
+setInterval(switchSlides, 3000);
+
