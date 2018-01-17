@@ -125,6 +125,6 @@ function switchSlides() {
 		image.src = `images/${slideshowId}/${counter}.jpg`
 	}
 }
-
+switchSlides();
 setInterval(switchSlides, 3000);
 
